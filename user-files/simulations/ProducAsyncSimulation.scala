@@ -21,9 +21,9 @@ class ProducAsyncSimulation extends Simulation {
     .during(60){
     exec(http("request_1")  // 8
       .get("/api/products/async")) // 9
-      .pause(1) // 10
+      .pause(1000 milliseconds, 3000 milliseconds) // 10
   }
   setUp( // 11
-    scn.inject(rampUsers(300) over(20 seconds)) // 12
+    scn.inject(atOnceUsers(300)) // 12
   ).protocols(httpConf) // 13
 }

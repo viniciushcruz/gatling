@@ -7,7 +7,7 @@ import scala.concurrent.duration._
 class ProductSimulation extends Simulation { // 3
 
   val httpConf = http // 4
-    .baseURL("http://172.16.57.122:8091") // 5
+    .baseURL("http://localhost:8080") // 5
     .acceptHeader("text/html,application/xhtml+xml,application/json;q=0.9,*/*;q=0.8") // 6
     .doNotTrackHeader("1")
     .acceptLanguageHeader("en-US,en;q=0.5")
@@ -17,7 +17,7 @@ class ProductSimulation extends Simulation { // 3
   val scn = scenario("ProductSimulation")  // 7
   .during(30){
      exec(http("request_1")  // 8
-    .get("/users")) // 9
+    .get("/api/products")) // 9
     .pause(1) // 10
 	}
   setUp( // 11
